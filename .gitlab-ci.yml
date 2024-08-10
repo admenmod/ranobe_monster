@@ -1,0 +1,11 @@
+build:
+  variables:
+    DOCKER_AUTH_CONFIG: $DOCKER_AUTH_CONFIG
+  image: git.ranobe.monster:5050/ranobe_monster/alpine_podman_bilder:main
+  stage: build
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  script:
+    - podman login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - podman build -t $IMAGE_TAG .
+    - podman push $IMAGE_TAG
