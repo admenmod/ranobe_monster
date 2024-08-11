@@ -1,18 +1,18 @@
-import styles from './page.module.css';
+import styles from '../page.module.css';
 
 import { math as Math } from 'ver/helpers';
-
-import { INovel } from '@/models/Novel';
 
 import { Tit } from '@/components/Tit';
 import { CardBook } from '@/components/CardBook';
 import { MainSlider } from '@/components/MainSlider';
 
+import { INovel } from '@/models/Novel';
+
 
 const ID = () => Math.randomInt(0, 1e7);
 
 
-const arr: INovel[] = new Array(30).fill(0).map(() => {
+const arr: INovel[] = new Array(10).fill(0).map(() => {
 	const r_name = Math.randomInt(0, 1);	
 
 	return {
@@ -33,20 +33,17 @@ const arr: INovel[] = new Array(30).fill(0).map(() => {
 	}
 });
 
-const n1 = arr.slice(0, 10);
-const n2 = arr.slice(10, 20);
-const n3 = arr.slice(20, 30);
-
 
 export default function Page() {
 	return <main className={styles.main}>
+		/offline.tsx
 		<Tit tit='Популярное' style={{ margin: '5vh 5vw' }} />
-		<MainSlider data={n1.map(it => <CardBook key={it.type_n_id} novel={it} />)} />
+		<MainSlider data={arr.map(it => <CardBook key={it.type_n_id} novel={it} />)} />
 
 		<Tit tit='Новое' style={{ margin: '5vh 5vw' }} />
-		<MainSlider data={n2.map(it => <CardBook key={it.type_n_id} novel={it} />)} />
+		<MainSlider data={arr.map(it => <CardBook key={it.type_n_id} novel={it} />)} />
 
 		<Tit tit='Рекомендации' style={{ margin: '5vh 5vw' }} />
-		<MainSlider data={n3.map(it => <CardBook key={it.type_n_id} novel={it} />)} />
+		<MainSlider data={arr.map(it => <CardBook key={it.type_n_id} novel={it} />)} />
 	</main>
 }

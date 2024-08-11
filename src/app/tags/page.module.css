@@ -1,0 +1,25 @@
+.main {
+	display: grid;
+	justify-content: center;
+}
+
+.wrapper_tags {
+	/* display: grid; */
+	/* gap: 5px; */
+	/* grid-template-columns: repeat(auto-fit, minmax(50xp, 1fr)); */
+	/* grid-auto-flow: dense; */
+	/* word-wrap: break-word; */
+	padding: 20px;
+	width: 100%;
+	background: #222222;
+}
+
+div.tag {
+	display: inline-block;
+	margin: 5px;
+	padding: 5px 20px;
+	width: max-content;
+	background: #222233;
+	border: 2px solid #eeeeee;
+	border-radius: 7px;
+}

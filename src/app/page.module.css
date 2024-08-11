@@ -2,21 +2,3 @@
 	display: grid;
 	justify-content: center;
 }
-
-.slider {
-	padding: 10px 20px;
-	width: 100vw;
-}
-
-.swiper_scrollbar_drag {
-	color: #eeeeee;
-	background: #eeeeee;
-}
-
-.card_book {
-	text-align: center;
-	width: max-content;
-	background: #333333;
-	box-shadow: 0px 0px 5px #111111;
-	border-radius: 5px;
-}

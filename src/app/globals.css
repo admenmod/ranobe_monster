@@ -101,3 +101,18 @@ a {
 		color-scheme: dark;
 	}
 }
+
+
+a.tit {
+	text-decoration: none;
+}
+@media(hover: hover) {
+	a.tit:hover {
+		text-decoration: underline;
+	}
+}
+@media(hover: none) {
+	a.tit:active {
+		text-decoration: underline;
+	}
+}
