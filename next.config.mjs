@@ -4,8 +4,6 @@ import withPWA from '@ducanh2912/next-pwa';
 
 export default withPWA({
 	dest: 'public',
-	// register: true,
-	// skipWaiting: true,
 	swcMinify: true,
 	aggressiveFrontEndNavCaching: true,
 	cacheOnFrontEndNav: true,
@@ -15,7 +13,8 @@ export default withPWA({
 	},
 	disable: process.env.NODE_ENV === 'development'
 })({
-	reactStrictMode: true,
+	output: 'standalone',
+	reactStrictMode: false,
 	typescript: {
 		ignoreBuildErrors: true
 	}

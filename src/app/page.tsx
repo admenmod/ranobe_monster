@@ -40,10 +40,10 @@ const n3 = arr.slice(20, 30);
 
 export default function Page() {
 	return <main className={styles.main}>
-		<Tit tit='Популярное' style={{ margin: '5vh 5vw' }} />
+		<Tit tit='Новое' style={{ margin: '5vh 5vw' }} />
 		<MainSlider data={n1.map(it => <CardBook key={it.type_n_id} novel={it} />)} />
 
-		<Tit tit='Новое' style={{ margin: '5vh 5vw' }} />
+		<Tit tit='Популярное' style={{ margin: '5vh 5vw' }} />
 		<MainSlider data={n2.map(it => <CardBook key={it.type_n_id} novel={it} />)} />
 
 		<Tit tit='Рекомендации' style={{ margin: '5vh 5vw' }} />

@@ -1,25 +1,31 @@
-import { ITags } from '@/models/Tags';
-import { INovel } from '@/models/Novel';
+import { API_ROOT } from '@/config';
+
+import type { ITags } from '@/models/Tags';
+import type { INovel } from '@/models/Novel';
 
 
-const API_ROOT_CSR = `${process.env.HOSTNAME || 'http://localhost:3000'}/api`;
-const API_ROOT_SSR = `${process.env.API_DOMAIN || 'http://ranobe.monster:8080'}/api`;
+const searchParamsToString = (sp?: string | Record<string, string>) => !sp ? '' : typeof sp === 'string' ? sp
+	: '?'+Object.entries(sp).map(([i, v]) => `${i}=${v}`).join('&');
 
-const API_ROOT = (() => {
-	try { return window && true; }
-	catch(err) { return false; }
-})() ? API_ROOT_CSR : API_ROOT_SSR;
 
 export namespace api {
-	export const tags = () => fetch(`${API_ROOT}/tags`, {
+	export const tags = Object.assign(() => fetch(tags.url(), {
 		cache: 'force-cache'
-	}).then(data => data.json()) as Promise<ITags>;
+	}).then(data => data.json()) as Promise<ITags>, {
+		url: () => `${API_ROOT}/tags`
+	});
 
-	export const search = (params: string | Record<string, string> = {}) => {
-		const p = typeof params === 'string' ? params : '?'+Object.entries(params).map(([i, v]) => `${i}=${v}`).join('&');
-
-		return fetch(`${API_ROOT}/search${p}`, {
+	export const search = Object.assign((sp?: string | Record<string, string>): Promise<INovel[] | null> => {
+		return fetch(search.url(sp), {
 			cache: 'force-cache'
-		}).then(data => data.json()) as Promise<INovel[]>;
-	};
+		}).then(data => data.json());
+	}, {
+		url: (sp?: string | Record<string, string>) => `${API_ROOT}/search${searchParamsToString(sp)}`
+	});
+
+	export const novel = Object.assign((id: string): Promise<INovel | null> => fetch(novel.url(id), {
+		cache: 'force-cache'
+	}).then(data => data.json()), {
+		url: (id: string) => `${API_ROOT}/novels/${id}`
+	});
 }

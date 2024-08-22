@@ -11,10 +11,13 @@
 	},
 	"dependencies": {
 		"@ducanh2912/next-pwa": "^10.2.8",
+		"mol_wire_lib": "^1.0.1126",
 		"next": "14.2.5",
 		"react": "^18",
 		"react-dom": "^18",
-		"swiper": "^11.1.9"
+		"react-query": "^3.39.3",
+		"swiper": "^11.1.9",
+		"swr": "^2.2.5"
 	},
 	"devDependencies": {
 		"@types/next-pwa": "^5.6.9",

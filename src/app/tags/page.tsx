@@ -1,4 +1,5 @@
-import styles from './page.module.css';
+import pstyles from './page.module.css';
+import cstyles from '@/components/style.module.css';
 
 import { api } from '@/utils/api';
 
@@ -6,9 +7,9 @@ import { api } from '@/utils/api';
 export default async function Page() {
 	const data = await api.tags();
 
-	return <main className={styles.main}>
-		<div className={styles.wrapper_tags}>
-			{ Object.keys(data).map(id => <div className={styles.tag}>{data[id]}</div>) }
+	return <main className={pstyles.main}>
+		<div className={pstyles.wrapper_tags}>
+			{ Object.keys(data).map(id => <div className={cstyles.novel_tag}>{data[id]}</div>) }
 		</div>
 	</main>
 }

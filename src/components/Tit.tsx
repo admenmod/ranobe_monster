@@ -7,12 +7,13 @@ export function Tit({ tit, style }: Readonly<{
 	tit: string;
 	style: CSSProperties;
 }>) {
-	return <a href={`#${tit}`} className='tit'
-			onClick={e => e.preventDefault()}
-	><h3 className='tit' style={style} onClick={e => {
-		const t = '#'+tit;
+	return <a href={`#${tit}`} className='tit' onClick={e => e.preventDefault()}>
+		<h3 className='tit' style={style} onClick={() => {
+			const t = '#'+tit;
 
-		if(t !== decodeURI(location.hash)) location.hash = t;
-		else history.pushState(null, '', location.href.replace(/#.*$/, ''));
-	}}><span style={{ opacity: 0.5 }}>#</span> {tit}</h3></a>;
+			if(t !== decodeURI(location.hash)) location.hash = t;
+			else history.pushState(null, '', location.href.replace(/#.*$/, ''));
+		}}>
+			<span style={{ opacity: 0.5, fontFamily: 'monospace' }}>#</span> {tit}</h3>
+	</a>
 }
